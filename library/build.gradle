@@ -7,6 +7,8 @@ repositories {
 
 dependencies {
   compile 'com.google.code.findbugs:jsr305:2.0.2'
+  compile 'com.android.support:appcompat-v7:19.1.0'
+  compile 'com.android.support:support-v4:19.1.0'
 
   testCompile files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
   androidTestProvided files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
@@ -21,7 +23,7 @@ android {
   buildToolsVersion '19.0.3'
 
   defaultConfig {
-    minSdkVersion 11
+    minSdkVersion 9
     targetSdkVersion 19
   }
 
