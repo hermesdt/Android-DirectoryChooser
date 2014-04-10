@@ -3,6 +3,9 @@ apply plugin: 'android-test'
 apply plugin: 'checkstyle'
 
 repositories {
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
