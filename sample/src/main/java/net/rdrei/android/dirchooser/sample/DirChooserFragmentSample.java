@@ -1,9 +1,7 @@
 package net.rdrei.android.dirchooser.sample;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,7 +9,7 @@ import net.rdrei.android.dirchooser.DirectoryChooserFragment;
 
 import javax.annotation.Nonnull;
 
-public class DirChooserFragmentSample extends Activity implements DirectoryChooserFragment.OnFragmentInteractionListener {
+public class DirChooserFragmentSample extends ActionBarActivity implements DirectoryChooserFragment.OnFragmentInteractionListener {
 
     private TextView mDirectoryTextView;
     private DirectoryChooserFragment mDialog;
@@ -28,7 +26,7 @@ public class DirChooserFragmentSample extends Activity implements DirectoryChoos
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mDialog.show(getFragmentManager(), null);
+                        mDialog.show(getSupportFragmentManager(), null);
                     }
                 });
     }
