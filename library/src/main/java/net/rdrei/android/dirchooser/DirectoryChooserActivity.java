@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import javax.annotation.Nonnull;
@@ -47,7 +48,7 @@ public class DirectoryChooserActivity extends ActionBarActivity implements
             final FragmentManager fragmentManager = getSupportFragmentManager();
             final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir);
             fragmentManager.beginTransaction()
-                    .add(R.id.main, fragment)
+                    .add(R.id.main, fragment, DirectoryChooserFragment.TAG)
                     .commit();
         }
     }
@@ -86,5 +87,17 @@ public class DirectoryChooserActivity extends ActionBarActivity implements
     public void onCancelChooser() {
         setResult(RESULT_CANCELED);
         finish();
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            DirectoryChooserFragment f = (DirectoryChooserFragment) getSupportFragmentManager().findFragmentByTag(DirectoryChooserFragment.TAG);
+            if(f != null){
+                if(f.navigateUp())
+                  return true;
+            }
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }

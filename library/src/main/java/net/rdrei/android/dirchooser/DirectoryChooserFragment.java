@@ -46,7 +46,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     public static final String KEY_CURRENT_DIRECTORY = "CURRENT_DIRECTORY";
     private static final String ARG_NEW_DIRECTORY_NAME = "NEW_DIRECTORY_NAME";
     private static final String ARG_INITIAL_DIRECTORY = "INITIAL_DIRECTORY";
-    private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
+    public static final String TAG = DirectoryChooserFragment.class.getSimpleName();
     private String mNewDirectoryName;
     private String mInitialDirectory;
 
@@ -175,11 +175,7 @@ public class DirectoryChooserFragment extends DialogFragment {
 
             @Override
             public void onClick(View v) {
-                File parent;
-                if (mSelectedDir != null
-                        && (parent = mSelectedDir.getParentFile()) != null) {
-                    changeDirectory(parent);
-                }
+                navigateUp();
             }
         });
 
@@ -211,6 +207,17 @@ public class DirectoryChooserFragment extends DialogFragment {
         changeDirectory(initialDir);
 
         return view;
+    }
+
+    public boolean navigateUp(){
+        File parent;
+        if (mSelectedDir != null
+                && (parent = mSelectedDir.getParentFile()) != null) {
+            changeDirectory(parent);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void adjustResourceLightness() {
@@ -387,7 +394,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         final Activity activity = getActivity();
         if (activity != null && mSelectedDir != null) {
             mBtnConfirm.setEnabled(isValidFile(mSelectedDir));
-            getActivity().invalidateOptionsMenu();
+            getActivity().supportInvalidateOptionsMenu();
         }
     }
 
