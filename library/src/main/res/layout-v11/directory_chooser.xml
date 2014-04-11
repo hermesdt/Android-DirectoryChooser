@@ -5,7 +5,78 @@
     android:layout_height="match_parent" >
 
     <RelativeLayout
-        android:id="@+id/footer"
+        android:id="@+id/directoryInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageButton
+            android:id="@+id/btnNavUp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/borderless_button"
+            android:contentDescription="@string/up_label"
+            android:src="@drawable/navigation_up" />
+
+        <TextView
+            android:id="@+id/txtvSelectedFolderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/btnNavUp"
+            android:text="@string/selected_folder_label"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            tools:text="/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard/sdcard"
+            android:id="@+id/txtvSelectedFolder"
+            android:layout_below="@id/txtvSelectedFolderLabel"
+            android:layout_toRightOf="@id/btnNavUp"
+            android:layout_toLeftOf="@+id/btnCreateFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:scrollHorizontally="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
+
+        <ImageButton
+                android:id="@+id/btnCreateFolder"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/create_folder_label"
+                android:background="@drawable/borderless_button"
+                android:src="@drawable/ic_action_create"
+                />
+        <!-- android:layout_below="@id/btnNavUp" -->
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/directoryInfo"
+        android:background="@color/bright_blue" />
+
+    <ListView
+        android:id="@+id/directoryList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/footer"
+        android:layout_below="@id/divider" />
+
+    <RelativeLayout
+        android:id="@id/footer"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true" >
@@ -48,76 +119,5 @@
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/confirm_label" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/directoryInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
-
-        <ImageButton
-            android:id="@+id/btnNavUp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/borderless_button"
-            android:contentDescription="@string/up_label"
-            android:src="@drawable/navigation_up" />
-
-        <TextView
-            android:id="@+id/txtvSelectedFolderLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@id/btnNavUp"
-            android:text="@string/selected_folder_label"
-            android:textStyle="bold" >
-        </TextView>
-
-        <TextView
-            tools:text="asdfasdf"
-            android:id="@+id/txtvSelectedFolder"
-            android:layout_below="@id/txtvSelectedFolderLabel"
-            android:layout_toRightOf="@id/btnNavUp"
-            android:layout_toLeftOf="@+id/btnCreateFolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            />
-
-        <ImageButton
-                android:id="@+id/btnCreateFolder"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:contentDescription="@string/create_folder_label"
-                android:background="@drawable/borderless_button"
-                android:src="@drawable/ic_action_create"
-                />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/btnNavUp"
-            android:background="@color/bright_blue" />
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/directoryList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/directoryInfo" />
 
 </RelativeLayout>
